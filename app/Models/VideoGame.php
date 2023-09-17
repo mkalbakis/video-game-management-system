@@ -21,6 +21,7 @@ class VideoGame extends Model
         'title',
         'description',
         'release_date',
-        'genre'
+        'genre',
+        'user_id'
     ];
 }

@@ -12,6 +12,7 @@ class VideoGameController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->role == 'user') return VideoGame::where('user_id', auth()->user()->id)->get();
         return VideoGame::all();
     }
 
@@ -32,7 +33,8 @@ class VideoGameController extends Controller
             'title' => $fields['title'],
             'description' => $fields['description'],
             'release_date' => $fields['release_date'],
-            'genre' => $fields['genre']
+            'genre' => $fields['genre'],
+            'user_id' => auth()->user()->id
         ]);
 
         return response($game, 201);
@@ -49,6 +51,10 @@ class VideoGameController extends Controller
             return response(['message' => 'Game Not Found'], 404);
         }
 
+        if (auth()->user()->role == 'user' && $videogame->user_id != auth()->user()->id) {
+            return response(['message' => 'Unauthorized'], 401);
+        }
+
         return response($videogame, 200);
     }
 
@@ -63,6 +69,10 @@ class VideoGameController extends Controller
             return response(['message' => 'Game Not Found'], 404);
         }
 
+        if ($videogame->user_id != auth()->user()->id) {
+            return response(['message' => 'Unauthorized'], 401);
+        }
+
         $request->validate([
             'title' => 'nullable|string|unique:video_games,title',
             'description' => 'nullable|string',
@@ -70,7 +80,7 @@ class VideoGameController extends Controller
             'genre' => 'nullable'
         ]);
 
-        $videogame->update($request->all());
+        $videogame->update(array_filter($request->all()));
 
         return $videogame;
     }
@@ -86,8 +96,12 @@ class VideoGameController extends Controller
             return response(['message' => 'Game Not Found'], 404);
         }
 
-        VideoGame::destroy($id);
+        if (auth()->user()->role == 'admin' || $videogame->user_id != auth()->user()->id) {
+            VideoGame::destroy($id);
 
-        return VideoGame::all();
+            return VideoGame::all();
+        }
+
+        return response(['message' => 'Unauthorized'], 401);
     }
 }
