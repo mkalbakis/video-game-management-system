@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "94e3ed02-4696-4591-ae67-0540df50eac5",
+		"name": "Simple Video Game Management System API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13945001"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "",
+							"description": "required",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"description": "required, unique",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"description": "required",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "",
+							"description": "required",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "",
+							"description": "required, user|admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8000/api/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/api/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8000/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Video Games",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": "http://localhost:8000/api/video-games"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Video Game",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "8|RBdkgMS5ZgJbJ9MMyEKwKjIxfou0gsHGEdaZpHH51a04b471"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "",
+							"description": "required, unique",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "",
+							"description": "required",
+							"type": "text"
+						},
+						{
+							"key": "release_date",
+							"value": "",
+							"description": "required, format: DD-MM-YYYY",
+							"type": "text"
+						},
+						{
+							"key": "genre",
+							"value": "",
+							"description": "required",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8000/api/video-games"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Video Game",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/api/video-games/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Video Game",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/api/video-games/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Video Game",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "",
+							"description": "optional, unique",
+							"type": "text"
+						},
+						{
+							"key": "release_date",
+							"value": "",
+							"description": "optional, format: DD-MM-YYYY",
+							"type": "text"
+						},
+						{
+							"key": "genre",
+							"value": "",
+							"description": "optional",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "",
+							"description": "optional",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8000/api/video-games/1"
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/api/user"
+			},
+			"response": []
+		}
+	]
+}
