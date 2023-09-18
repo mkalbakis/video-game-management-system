@@ -33,7 +33,7 @@ class VideoGameController extends Controller
             'title' => $fields['title'],
             'description' => $fields['description'],
             'release_date' => $fields['release_date'],
-            'genre' => $fields['genre'],
+            'genre' => strtolower($fields['genre']),
             'user_id' => auth()->user()->id
         ]);
 
