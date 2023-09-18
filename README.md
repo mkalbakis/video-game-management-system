@@ -2,6 +2,7 @@
 
 - [Dependencies](#dependencies)
 - [Installation](#installation)
+- [Usage](#usage)
 - [REST API](#rest-api)
   - [Public Routes](#public-routes)
     - [Register New User](#register-new-user)
@@ -54,6 +55,10 @@
     php artisan migrate
     php artisan serve
     ```
+
+## Usage
+
+Import `Simple-Video-Game-Management-System-API.postman_collection.json` into Postman to run the requests
 
 ## REST API
 
