@@ -67,11 +67,11 @@ These endpoints are public and don't need authentication
 
 #### Register New User
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `POST /api/register`
 
-##### Parameters
+##### Parameters <!-- omit from toc -->
 
 - name: `required`
 - email: `required, unique`
@@ -79,7 +79,7 @@ These endpoints are public and don't need authentication
 - password_confirmation: `required`
 - role: `required, [admin|user]`
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 Created user and token
 
@@ -99,16 +99,16 @@ Created user and token
 
 #### Login
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `POST /api/login`
 
-##### Parameters
+##### Parameters <!-- omit from toc -->
 
 - email: `required`
 - password: `required`
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 ```JSON
 {
@@ -129,15 +129,15 @@ Created user and token
 
 #### Get User details
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `GET /api/user`
 
-##### Authorization
+##### Authorization <!-- omit from toc -->
 
 Bearer Token: token that is received upon registration or login
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 ```JSON
 {
@@ -153,15 +153,15 @@ Bearer Token: token that is received upon registration or login
 
 #### Logout
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `POST /api/logout`
 
-##### Authorization
+##### Authorization <!-- omit from toc -->
 
 Bearer Token: token that is received upon registration or login
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 ```JSON
 {
@@ -171,22 +171,22 @@ Bearer Token: token that is received upon registration or login
 
 #### Create Video Game
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `POST /api/video-games`
 
-##### Parameters
+##### Parameters <!-- omit from toc -->
 
 - title: `required|unique`
 - description: `required`
 - release_date: `required|format DD-MM-YYYY`
 - genre: `required`
 
-##### Authorization
+##### Authorization <!-- omit from toc -->
 
 Bearer Token: token that is received upon registration or login
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 Video Game that was created
 
@@ -203,15 +203,15 @@ Video Game that was created
 
 #### Get Video Games
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `GET /api/video-games`
 
-##### Authorization
+##### Authorization <!-- omit from toc -->
 
 Bearer Token: token that is received upon registration or login
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 List of video games of current user
 
@@ -230,15 +230,15 @@ List of video games of current user
 
 #### Get Single Video Game
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `GET /api/video-games/{id}`
 
-##### Authorization
+##### Authorization <!-- omit from toc -->
 
 Bearer Token: token that is received upon registration or login
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 Video Game with `{id}` if it is owned by current user
 
@@ -257,22 +257,22 @@ Video Game with `{id}` if it is owned by current user
 
 #### Update Video Game
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `PUT /api/video-games/{id}`
 
-##### Parameters
+##### Parameters <!-- omit from toc -->
 
 - title: `optional|unique`
 - description: `optional`
 - release_date: `optional|format DD-MM-YYYY`
 - genre: `optional`
 
-##### Authorization
+##### Authorization <!-- omit from toc -->
 
 Bearer Token: token that is received upon registration or login
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 Updated Video Game with `{id}` if it is owned by current user
 
@@ -294,15 +294,15 @@ Updated Video Game with `{id}` if it is owned by current user
 Simple users can delete only the video games that they own
 Admin users can delete any game
 
-##### Request
+##### Request <!-- omit from toc -->
 
 `DELETE /api/video-games/{id}`
 
-##### Authorization
+##### Authorization <!-- omit from toc -->
 
 Bearer Token: token that is received upon registration or login
 
-##### Returns
+##### Returns <!-- omit from toc -->
 
 Deleted message
 
