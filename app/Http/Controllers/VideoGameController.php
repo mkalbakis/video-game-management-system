@@ -96,10 +96,10 @@ class VideoGameController extends Controller
             return response(['message' => 'Game Not Found'], 404);
         }
 
-        if (auth()->user()->role == 'admin' || $videogame->user_id != auth()->user()->id) {
+        if (auth()->user()->role == 'admin' || $videogame->user_id == auth()->user()->id) {
             VideoGame::destroy($id);
 
-            return VideoGame::all();
+            return response(['message' => 'Video Game deleted'], 200);
         }
 
         return response(['message' => 'Unauthorized'], 401);
